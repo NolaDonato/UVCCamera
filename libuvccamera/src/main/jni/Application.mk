@@ -26,7 +26,8 @@
 # Note: Supporting GCC on NDK is already deprecated and GCC will be removed from NDK soon.
 #NDK_TOOLCHAIN_VERSION := 4.9
 
-APP_PLATFORM := android-14
-APP_ABI := armeabi armeabi-v7a x86 mips
-#APP_OPTIM := debug
-APP_OPTIM := release
+APP_PLATFORM := android-18
+APP_ABI := arm64-v8a armeabi-v7a
+APP_OPTIM := debug
+#APP_OPTIM := release
+LOCAL_CFLAGS := -g

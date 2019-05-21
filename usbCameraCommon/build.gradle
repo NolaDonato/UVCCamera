@@ -42,12 +42,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            jniDebuggable = true
+        }
     }
 }
 
 dependencies {
 	api fileTree(dir: 'libs', include: ['*.jar'])
-
+	implementation "com.android.support:appcompat-v7:${supportLibVersion}"
 	implementation "com.android.support:support-v4:${supportLibVersion}"
 	implementation "com.android.support:support-annotations:${supportLibVersion}"
 

@@ -25,7 +25,7 @@
 #include "_onload.h"
 #include "utilbase.h"
 
-#define LOCAL_DEBUG 0
+#define LOCAL_DEBUG 1
 
 extern int register_uvccamera(JNIEnv *env);
 

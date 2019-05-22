@@ -24,7 +24,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#define LOCAL_DEBUG 0
+#define LOCAL_DEBUG 1
 
 #define LOG_TAG "libusb/core"
 #if 1	// デバッグ情報を出さない時1

@@ -43,10 +43,10 @@
  * @brief Support for finding, inspecting and opening UVC devices
  */
 
-#define LOCAL_DEBUG 0
+#define LOCAL_DEBUG 1
 
 #define LOG_TAG "libuvc/device"
-#if 1	// デバッグ情報を出さない時1
+#if 0	// デバッグ情報を出さない時1
 	#ifndef LOG_NDEBUG
 		#define	LOG_NDEBUG		// LOGV/LOGD/MARKを出力しない時
 		#endif

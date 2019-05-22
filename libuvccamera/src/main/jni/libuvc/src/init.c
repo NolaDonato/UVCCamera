@@ -143,7 +143,7 @@ uvc_error_t uvc_init2(uvc_context_t **pctx, struct libusb_context *usb_ctx, cons
 
 	if (ctx != NULL)
 		*pctx = ctx;
-
+    LOGD("uvc_init2 returns %d", ret);
 	return ret;
 }
 

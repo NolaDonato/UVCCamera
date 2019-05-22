@@ -30,6 +30,7 @@
 
 #include "libusbi.h"
 
+
 // comment out because duplicate definitions already exit in libusb.h
 //#define DESC_HEADER_LENGTH			2	// XXX this is same as LIBUSB_DT_HEADER_SIZE in libusb.h
 //#define DEVICE_DESC_LENGTH			18	// XXX this is same as LIBUSB_DT_DEVICE_SIZE in libusb.h

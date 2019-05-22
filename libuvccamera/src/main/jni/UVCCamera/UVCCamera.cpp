@@ -23,7 +23,7 @@
 */
 
 #define LOG_TAG "UVCCamera"
-#if 1	// デバッグ情報を出さない時1
+#if 0	// デバッグ情報を出さない時1
 	#ifndef LOG_NDEBUG
 		#define	LOG_NDEBUG		// LOGV/LOGD/MARKを出力しない時
 		#endif
@@ -46,7 +46,7 @@
 #include "Parameters.h"
 #include "libuvc_internal.h"
 
-#define	LOCAL_DEBUG 0
+#define	LOCAL_DEBUG 1
 
 //**********************************************************************
 //
@@ -128,6 +128,7 @@ void UVCCamera::clearCameraParams() {
 	mMultiplierLimit.min = mMultiplierLimit.max = mMultiplierLimit.def = 0;
 	mAnalogVideoStandard.min = mAnalogVideoStandard.max = mAnalogVideoStandard.def = 0;
 	mAnalogVideoLockState.min = mAnalogVideoLockState.max = mAnalogVideoLockState.def = 0;
+	LOGD("ClearCameraParams");
 }
 
 //======================================================================
@@ -143,9 +144,9 @@ int UVCCamera::connect(int vid, int pid, int fd, int busnum, int devaddr, const 
 		mUsbFs = strdup(usbfs);
 		if (UNLIKELY(!mContext)) {
 			result = uvc_init2(&mContext, NULL, mUsbFs);
-//			libusb_set_debug(mContext->usb_ctx, LIBUSB_LOG_LEVEL_DEBUG);
+			libusb_set_debug(mContext->usb_ctx, LIBUSB_LOG_LEVEL_DEBUG);
 			if (UNLIKELY(result < 0)) {
-				LOGD("failed to init libuvc");
+				LOGD("failed to init libuvc %d", result);
 				RETURN(result, int);
 			}
 		}

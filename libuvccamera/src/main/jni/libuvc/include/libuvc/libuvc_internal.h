@@ -14,7 +14,7 @@
 #include "utilbase.h"
 #include "utlist.h"
 
-//#define UVC_DEBUGGING
+#define UVC_DEBUGGING 1
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))

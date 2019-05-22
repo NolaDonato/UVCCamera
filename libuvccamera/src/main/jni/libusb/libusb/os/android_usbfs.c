@@ -28,7 +28,7 @@
 #define LOCAL_DEBUG 0
 
 #define LOG_TAG "libusb/usbfs"
-#if 1	// デバッグ情報を出さない時1
+#if 0	// デバッグ情報を出さない時1
 	#ifndef LOG_NDEBUG
 		#define	LOG_NDEBUG		// LOGV/LOGD/MARKを出力しない時
 		#endif
@@ -1001,6 +1001,8 @@ static int op_get_config_descriptor_by_value(struct libusb_device *dev,
 		if UNLIKELY(next < 0)
 			return next;
 		config = (struct libusb_config_descriptor *) descriptors;
+		LOGD("config DescriptorType=%d ConfigurationValue=%d length=%d TotalLength=%d",
+		 config->bDescriptorType, config->bConfigurationValue, config->bLength, config->wTotalLength);
 		if (config->bConfigurationValue == value) {
 			*buffer = descriptors;
 			return next;
@@ -1045,6 +1047,7 @@ static int op_get_config_descriptor(struct libusb_device *dev,
 	unsigned char *descriptors = priv->descriptors;
 	int i, r, size = priv->descriptors_len;
 
+    LOGD("op_get_config_descriptor %d descriptors", size);
 	/* Unlike the device desc. config descs. are always in raw format */
 	*host_endian = 0;
 
@@ -1062,11 +1065,13 @@ static int op_get_config_descriptor(struct libusb_device *dev,
 		LOGE("could not find config descriptor:r=%d", r);
 		return r;
 	}
+	LOGD("seek_to_first_descriptor returns %d", r);
 	descriptors += r;
 	size -= r;
 	/* Seek till the config is found, or till "EOF" */
 	for (i = 0; ; i++) {
 		r = seek_to_next_config(ctx, descriptors, size);
+		LOGD("seek_to_next_config returns %d", r);
 		if (UNLIKELY(r < 0))	// if error
 			return r;
 		if (i == config_index)

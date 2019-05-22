@@ -38,13 +38,16 @@ android {
 		targetSdkVersion versionTarget
 		versionCode 8
 		versionName "3.00"
-    }
+	}
 
     buildTypes {
         release {
             minifyEnabled true
+			useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
-        }
+			debuggable = true
+			signingConfig signingConfigs.debug
+		}
     }
 }
 

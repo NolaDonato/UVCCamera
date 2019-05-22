@@ -23,4 +23,3 @@
 -keep public interface com.serenegiant.usb.IStatusCallback
 -keep public interface com.serenegiant.usb.IFrameCallback
 -keep public interface com.serenegiant.usb.IButtonCallback
-
